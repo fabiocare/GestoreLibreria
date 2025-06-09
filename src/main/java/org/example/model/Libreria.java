@@ -70,6 +70,12 @@ public class Libreria {
         return libri.stream().filter(l -> l.getStatoLettura() == s).toList();
     }
 
+    public void sostituisciLibri(List<Libro> nuoviLibri){
+        libri.clear();
+        libri.addAll(nuoviLibri);
+        notificaObservers();
+    }
+
     public List<Libro> getTuttiLibri(){
         return Collections.unmodifiableList(libri);
     }
@@ -78,6 +84,4 @@ public class Libreria {
         libri.clear();
         notificaObservers();
     }
-
-
 }
