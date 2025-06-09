@@ -21,6 +21,7 @@ public class GestoreComandiTest {
         gestore = new GestoreComandi();
     }
 
+    //test per l'undo()
     @Test
     void testUndoComando(){
         Libro libro1= new Libro.Builder("Robinson Crusoe", "Daniel Defoe", "9780582541566")
