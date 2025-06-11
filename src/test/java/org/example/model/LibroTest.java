@@ -30,6 +30,4 @@ class LibroTest {
         );
         assertEquals("La valutazione deve essere tra 0 e 5", exception.getMessage());
     }
-
-    
 }

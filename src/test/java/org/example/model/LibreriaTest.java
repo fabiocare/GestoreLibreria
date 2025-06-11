@@ -7,15 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LibreriaTest {
     private Libreria libreria;
-    private Libro libroBase;
 
     @BeforeEach
     void setUp(){
         libreria = Libreria.getInstance();
         libreria.svuotaLibreria();
 
-        libroBase= new Libro.Builder("La Metamorfosi", "Franz Kafka", "9780393095333")
-                .genere(Genere.FANTASY)
+        Libro libroBase = new Libro.Builder("La Metamorfosi", "Franz Kafka", "9780393095333")
+                .genere(Genere.ROMANZO)
                 .valutazione(5)
                 .statoLettura(StatoLettura.LETTO)
                 .build();
@@ -65,7 +64,7 @@ public class LibreriaTest {
     @Test
     void testObserverNotificato(){
         boolean[] notificato = {false};
-        LibreriaObserver observer = nuoviLibri -> notificato[0] = true;
+        LibreriaObserver observer = _ -> notificato[0] = true;
         libreria.aggiungiObserver(observer);
         libreria.aggiungiLibro(new Libro.Builder("Deep Work", "Cal Newport", "9781455563869").build());
         assertTrue(notificato[0]);

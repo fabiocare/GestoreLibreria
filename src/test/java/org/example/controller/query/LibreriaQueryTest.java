@@ -1,4 +1,5 @@
 package org.example.controller.query;
+
 import org.example.model.Genere;
 import org.example.model.Libreria;
 import org.example.model.Libro;
@@ -18,7 +19,7 @@ class LibreriaQueryTest {
         libreria = Libreria.getInstance();
         libreria.svuotaLibreria();
         libreria.aggiungiLibro(new Libro.Builder("La Metamorfosi", "Franz Kafka", "9780393095333")
-                .genere(Genere.FANTASY)
+                .genere(Genere.ROMANZO)
                 .valutazione(5)
                 .statoLettura(StatoLettura.LETTO)
                 .build());
@@ -28,7 +29,7 @@ class LibreriaQueryTest {
                 .valutazione(4)
                 .statoLettura(StatoLettura.DA_LEGGERE)
                 .build());
-        libreria.aggiungiLibro(new Libro.Builder("1984", "Orwell", "9780140817744")
+        libreria.aggiungiLibro(new Libro.Builder("1984", "George Orwell", "9780140817744")
                 .genere(Genere.FANTASCIENZA)
                 .valutazione(5)
                 .statoLettura(StatoLettura.IN_LETTURA)
@@ -39,7 +40,7 @@ class LibreriaQueryTest {
     @CsvSource({
             "Franz Kafka, 1",
             "Cal Newport, 1",
-            "Orwell, 1",
+            "George Orwell, 1",
             "Primo Levi, 0"
     })
     void testCercaPerAutore(String autore, int expectedSize){

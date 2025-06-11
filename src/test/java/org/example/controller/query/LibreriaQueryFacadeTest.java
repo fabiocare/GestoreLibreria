@@ -9,11 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
-
-
 import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LibreriaQueryFacadeTest {
     private LibreriaQueryFacade facade;
@@ -89,19 +86,19 @@ public class LibreriaQueryFacadeTest {
     //ordinamento
     @Test
     void testOrdinamentoPerTitolo() {
-        List<Libro> risultati = facade.ordinaPerTitolo();
-        assertEquals("1984", risultati.getFirst().getTitolo());
+        List<Libro> ris = facade.ordinaPerTitolo();
+        assertEquals("1984", ris.getFirst().getTitolo());
     }
 
     @Test
     void testOrdinamentoPerAutore() {
-        List<Libro> risultati = facade.ordinaPerAutore();
-        assertEquals("Cal Newport", risultati.getFirst().getAutore());
+        List<Libro> ris = facade.ordinaPerAutore();
+        assertEquals("Cal Newport", ris.getFirst().getAutore());
     }
 
     @Test
     void testOrdinamentoPerValutazione() {
-        List<Libro> risultati = facade.ordinaPerValutazione();
-        assertEquals(5, risultati.getFirst().getValutazione());
+        List<Libro> ris = facade.ordinaPerValutazione().reversed();
+        assertEquals(5, ris.getFirst().getValutazione());
     }
 }

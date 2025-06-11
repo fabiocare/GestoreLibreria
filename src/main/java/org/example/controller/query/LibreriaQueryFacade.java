@@ -9,7 +9,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LibreriaQueryFacade {
-
     private final Libreria libreria;
 
     public LibreriaQueryFacade(){
@@ -46,6 +45,6 @@ public class LibreriaQueryFacade {
     }
 
     public List<Libro> ordinaPerAutore(){
-        return  new OrdinaLibriQuery(libreria, Comparator.comparing(Libro::getTitolo)).esegui();
+        return  new OrdinaLibriQuery(libreria, Comparator.comparing(Libro::getAutore)).esegui();
     }
 }

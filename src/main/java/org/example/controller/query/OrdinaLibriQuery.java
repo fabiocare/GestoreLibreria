@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrdinaLibriQuery {
-
     private final Libreria libreria;
     private final Comparator<Libro> comparatore;
 
