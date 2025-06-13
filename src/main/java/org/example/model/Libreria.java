@@ -45,10 +45,15 @@ public class Libreria {
         notificaObservers();
     }
 
-    public void aggiornaLibro( String isbn, Libro nuovoLibro){
-        for(int i= 0; i<libri.size(); i++){
-            if(libri.get(i).getIsbn().equals(isbn)){
-                libri.set(i, nuovoLibro);
+    public void modificaLibro( String isbn, StatoLettura nuovoStato, int nuovaValutazione){
+        for (Libro libro : libri) {
+            if (libro.getIsbn().equals(isbn)) {
+                Libro nuovoLibro = new Libro.Builder(libro.getTitolo(), libro.getAutore(), libro.getIsbn())
+                        .genere(libro.getGenere())
+                        .statoLettura(nuovoStato)
+                        .valutazione(nuovaValutazione)
+                        .build();
+                libri.set(libri.indexOf(libro), nuovoLibro);
                 return;
             }
         }
@@ -60,6 +65,10 @@ public class Libreria {
 
     public List<Libro> cercaPerAutore(String autore){
         return libri.stream().filter(l -> l.getAutore().toLowerCase().contains(autore.toLowerCase())).toList();
+    }
+
+    public List<Libro> cercaPerIsbn(String isbn){
+        return libri.stream().filter(l -> l.getIsbn().equals(isbn)).toList();
     }
 
     public List<Libro> filtraPerGenere(Genere g){

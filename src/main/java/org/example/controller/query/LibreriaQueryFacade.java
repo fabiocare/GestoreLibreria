@@ -17,7 +17,7 @@ public class LibreriaQueryFacade {
 
     //Op
     public List<Libro> getTuttiLibri(){
-        return libreria.getTuttiLibri();
+        return new GetTuttiLibriQuery(libreria).esegui();
     }
 
     public List<Libro> cercaPerTitolo(String titolo){
@@ -26,6 +26,10 @@ public class LibreriaQueryFacade {
 
     public List<Libro> cercaPerAutore(String autore){
         return new CercaPerAutoreQuery(libreria, autore).esegui();
+    }
+
+    public List<Libro> cercaPerIsbn(String isbn){
+        return new CercaPerIsbnQuery(libreria, isbn).esegui();
     }
 
     public List<Libro> filtraPerGenere(Genere genere){

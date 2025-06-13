@@ -36,16 +36,16 @@ public class LibreriaTest {
     }
 
     @Test
-    void testAggiornamentoLibro(){
+    void testModificaLibro(){
         Libro nuovo= new Libro.Builder("La Metamorfosi", "Franz Kafka", "9780393095333")
                 .valutazione(4)
                 .genere(Genere.FANTASY)
                 .statoLettura(StatoLettura.IN_LETTURA)
                 .build();
-        libreria.aggiornaLibro("9780393095333", nuovo);
+        libreria.modificaLibro("9780393095333", StatoLettura.LETTO, 5);
         Libro aggiornato = libreria.getTuttiLibri().getFirst();
-        assertEquals(4,aggiornato.getValutazione());
-        assertEquals(StatoLettura.IN_LETTURA, aggiornato.getStatoLettura());
+        assertEquals(5,aggiornato.getValutazione());
+        assertEquals(StatoLettura.LETTO, aggiornato.getStatoLettura());
     }
 
     @Test

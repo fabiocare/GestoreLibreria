@@ -7,8 +7,8 @@ public class Libro {
     private final String autore;
     private final String isbn;
     private final Genere genere;
-    private final int valutazione; // da 1 a 5
-    private final StatoLettura statoLettura;
+    private int valutazione; // da 1 a 5
+    private StatoLettura statoLettura;
 
     private Libro(Builder builder) {
         this.titolo = builder.titolo;
@@ -42,6 +42,14 @@ public class Libro {
 
     public StatoLettura getStatoLettura() {
         return statoLettura;
+    }
+
+    public void setStatoLettura(StatoLettura nuovoStato) {
+        this.statoLettura = nuovoStato;
+    }
+
+    public void setValutazione(int valutazione) {
+        this.valutazione = valutazione;
     }
 
     // Builder static inner class

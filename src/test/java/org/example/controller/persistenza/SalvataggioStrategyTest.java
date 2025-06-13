@@ -47,11 +47,11 @@ public class SalvataggioStrategyTest {
 
         salvataggio.salva(libreria, nomeFile);
 
-        Libreria libreriaCaricata = salvataggio.carica(nomeFile);
+        salvataggio.carica(nomeFile);
 
-        assertEquals(3, libreriaCaricata.getTuttiLibri().size());
+        assertEquals(3, libreria.getTuttiLibri().size());
 
-        Libro libroCaricato = libreriaCaricata.getTuttiLibri().getFirst();
+        Libro libroCaricato = libreria.getTuttiLibri().getFirst();
         assertEquals("La Metamorfosi", libroCaricato.getTitolo());
         assertEquals("Franz Kafka", libroCaricato.getAutore());
         assertEquals("9780393095333", libroCaricato.getIsbn());
@@ -67,11 +67,11 @@ public class SalvataggioStrategyTest {
 
         salvataggio.salva(libreria, nomeFile);
 
-        Libreria libreriaCaricata = salvataggio.carica(nomeFile);
+        salvataggio.carica(nomeFile);
 
-        assertEquals(3, libreriaCaricata.getTuttiLibri().size());
+        assertEquals(3, libreria.getTuttiLibri().size());
 
-        Libro libroCaricato = libreriaCaricata.getTuttiLibri().get(2);
+        Libro libroCaricato = libreria.getTuttiLibri().get(2);
         assertEquals("1984", libroCaricato.getTitolo());
         assertEquals("George Orwell", libroCaricato.getAutore());
         assertEquals("9780140817744", libroCaricato.getIsbn());

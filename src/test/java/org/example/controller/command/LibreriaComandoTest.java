@@ -4,7 +4,7 @@ import org.example.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.example.controller.GestoreComandi;
 public class LibreriaComandoTest {
     private Libreria libreria;
 
@@ -37,14 +37,14 @@ public class LibreriaComandoTest {
                 .build();
         libreria.aggiungiLibro(libro);
 
-        Comando comando = new RimuoviLibroComando(libreria, libro);
+        Comando comando = new RimuoviLibroComando(libreria, "9780156013987");
         comando.esegui();
 
         assertFalse(libreria.getTuttiLibri().contains(libro));
     }
 
     @Test
-    void testAggiornaLibro() {
+    void testModificaLibro() {
         Libro libroIniziale = new Libro.Builder("1984", "George Orwell", "9780451524935")
                 .genere(Genere.FANTASCIENZA)
                 .valutazione(3)
@@ -53,17 +53,11 @@ public class LibreriaComandoTest {
 
         libreria.aggiungiLibro(libroIniziale);
 
-        Libro libroAggiornato = new Libro.Builder("1984", "George Orwell", "9780451524935")
-                .genere(Genere.FANTASCIENZA)
-                .valutazione(5)
-                .statoLettura(StatoLettura.LETTO)
-                .build();
-
-        Comando comando = new AggiornaLibroComando(libreria, libroAggiornato, libroIniziale.getIsbn());
+        Comando comando = new ModificaLibroComando(libreria, libroIniziale.getIsbn(), StatoLettura.LETTO, 5);
         comando.esegui();
 
-        Libro trovato = libreria.cercaPerTitolo("1984").getFirst();
-        assertEquals(5, trovato.getValutazione());
-        assertEquals(StatoLettura.LETTO, trovato.getStatoLettura());
+        Libro modificato= libreria.cercaPerTitolo("1984").getFirst();
+        assertEquals(5, modificato.getValutazione());
+        assertEquals(StatoLettura.LETTO, modificato.getStatoLettura());
     }
 }

@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface SalvataggioStrategy {
     void salva(Libreria libreria, String percorsoFile)throws IOException;
-    Libreria carica(String percorsoFile)throws IOException;
+    void carica(String percorsoFile)throws IOException;
 }

@@ -31,7 +31,7 @@ public class SalvataggioCSV implements SalvataggioStrategy{
     }
 
     @Override
-    public Libreria carica(String percorsoFile) throws IOException{
+    public void carica(String percorsoFile) throws IOException{
         List<Libro> libri = new ArrayList<>();
         try(BufferedReader reader = new BufferedReader(new FileReader(percorsoFile))){
             String linea;
@@ -60,6 +60,5 @@ public class SalvataggioCSV implements SalvataggioStrategy{
         libreria.svuotaLibreria();
         for (Libro l: libri)
             libreria.aggiungiLibro(l);
-        return libreria;
     }
 }

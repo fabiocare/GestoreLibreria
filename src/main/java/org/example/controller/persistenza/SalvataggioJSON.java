@@ -20,7 +20,7 @@ public class SalvataggioJSON implements SalvataggioStrategy{
     }
 
     @Override
-    public Libreria carica(String percorsoFile) throws IOException{
+    public void carica(String percorsoFile) throws IOException{
         try(Reader reader = new FileReader(percorsoFile)){
             Type listType = new TypeToken<List<Libro>>(){}.getType();
             List<Libro> libri = gson.fromJson(reader, listType);
@@ -31,7 +31,6 @@ public class SalvataggioJSON implements SalvataggioStrategy{
             libreria.svuotaLibreria();
             for (Libro l: libri)
                 libreria.aggiungiLibro(l);
-            return libreria;
         }
     }
 }
